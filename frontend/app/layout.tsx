@@ -14,13 +14,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vibe-coding.com'),
-  title: {
-    default: 'Vibe Coding Platform - AI Photo Analysis, MBTI, Chat Analysis',
-    template: '%s | Vibe Coding',
-  },
-  description: {
-    default: 'AI-powered platform for photo analysis, MBTI psychological testing, chat conversation analysis, and creative brainstorming. Free tier available. Try our AI tools today!',
-  },
+  title: 'Vibe Coding Platform - AI Photo Analysis, MBTI, Chat Analysis',
+  description: 'AI-powered platform for photo analysis, MBTI psychological testing, chat conversation analysis, and creative brainstorming. Free tier available. Try our AI tools today!',
   keywords: [
     'AI photo analysis',
     'MBTI test',
@@ -52,7 +47,7 @@ export const metadata: Metadata = {
     alternateLocale: ['en_US'],
     siteName: 'Vibe Coding',
     title: 'Vibe Coding Platform - AI-Powered Insights',
-    description: 'Discover your personality type, analyze photos, understand conversations, and brainstorm ideas with AI. Free tier available!',
+    description: 'Discover your personality type, analyze photos, understand conversations and brainstorm ideas with AI. Free tier available!',
     url: 'https://vibe-coding.com',
     images: [{
       url: '/og-image.jpg',
@@ -76,11 +71,6 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
     },
-  },
-  
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
   },
   
   alternates: {

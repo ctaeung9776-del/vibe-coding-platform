@@ -3,6 +3,18 @@ import zaiService from '../services/zaiService';
 
 const router = express.Router();
 
+// Helper function to preprocess KakaoTalk chat format
+function preprocessKakaoChat(chatText: string): string {
+  // Remove timestamps and format for cleaner analysis
+  return chatText
+    .replace(/\[\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}\]/g, '') // Remove timestamps
+    .replace(/^\s*\w+\s*:\s*/gm, '') // Remove usernames
+    .replace(/님이\s*보낸\s*메시지/g, '')
+    .replace(/님이\s*보낸\s*사진/g, '')
+    .replace(/님이\s*보낸\s*사진/g, '')
+    .trim();
+}
+
 // POST /api/chat/analyze
 router.post('/analyze', async (req: Request, res: Response) => {
   try {
@@ -41,7 +53,7 @@ router.post('/analyze-kakao', async (req: Request, res: Response) => {
     }
 
     // Preprocess KakaoTalk format
-    const processedText = this.preprocessKakaoChat(chatText);
+    const processedText = preprocessKakaoChat(chatText);
     const analysis = await zaiService.analyzeChat(processedText);
 
     res.json({
@@ -60,16 +72,5 @@ router.post('/analyze-kakao', async (req: Request, res: Response) => {
     });
   }
 });
-
-// Helper function to preprocess KakaoTalk chat format
-function preprocessKakaoChat(chatText: string): string {
-  // Remove timestamps and format for cleaner analysis
-  return chatText
-    .replace(/\[\d{4}\/\d{2}\/\d{2} \d{2}:\d{2}\]/g, '') // Remove timestamps
-    .replace(/^\s*\w+\s*:\s*/gm, '') // Remove usernames
-    .replace(/님이\s*보낸\s*메시지/g, '')
-    .replace(/님이\s*보낸\s*사진/g, '')
-    .trim();
-}
 
 export default router;

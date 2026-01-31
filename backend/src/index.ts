@@ -10,7 +10,7 @@ import chatAnalysisRoutes from './routes/chatAnalysis';
 import brainstormRoutes from './routes/brainstorm';
 
 // Middleware
-import errorHandler from './middleware/errorHandler';
+import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
 
